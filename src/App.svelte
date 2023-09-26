@@ -158,7 +158,7 @@
 
   Skratka ...
   <br>
-  Če ne bo {alternativa} mau {#if spol === "moški"}spremenu{:else if spol === "ženski"}spremenila{:else}spremenilo{/if} stvari na slovenskem trgu,
+  Če ne bo {alternativa} mau {#if spol_alt === "moški"}spremenu{:else if spol_alt === "ženski"}spremenila{:else}spremenilo{/if} stvari na slovenskem trgu,
   <br>
   pol bomo šli in bomo zažgal {#if spol === "moški"}ta{:else if spol === "ženski"}to{:else}to{/if} <b>{#if spol === "moški"}poFUKAN{:else if spol === "ženski"}poFUKANO{:else}poFUKANO{/if} {sklanjatev_tozilnik}!</b>
   <br>
