@@ -16,6 +16,8 @@
   let zacetna_pritozba = "najbolj beden, najbolj smrdljiv, najbolj kretenski internetni ponudnik v Sloveniji";
   let spol = "moški";
   let spol_alt = "moški";
+  let spol_skupina = "moški";
+  let skupina = "ponudniki interneta";
 </script>
 
 <main>
@@ -30,11 +32,12 @@
   <Textfield bind:value={zacetna_pritozba} label="Začetno dejstvo (je najbolj beden, najbolj smrdljiv, najbolj kretenski internetni ponudnik v Sloveniji)" style="width: 100%" helperLine$style="width: 100%;" />
   <Textfield bind:value={alternativa} label="Ne tako dobra alternativa trenutnemu pritožbenemu subjektu (Če ne bo T-2 spremenil stvari na slov. trgu...)" style="width: 100%" helperLine$style="width: 100%;" />
   <Textfield bind:value={storitve} label="Storitev (o kvaliteti vašega interneta)" style="width: 100%" helperLine$style="width: 100%;" />
+  <Textfield bind:value={skupina} label="Skupina (da so usi ponudniki interneta v Sloveniji poslovni partnerji od SIOL-a)" style="width: 100%" helperLine$style="width: 100%;" />
   <Textfield bind:value={troubleshooting} label="Iskanje težav (a ste že probal resetirat modem)" style="width: 100%" helperLine$style="width: 100%;" />
   <Textfield bind:value={nedelujoci_subjekt} label="Nedelujoči subjekt (koga/kaj mu jebemo v pičko (pičko materino i ta modem))" style="width: 100%" helperLine$style="width: 100%;" />
 
   <p/>
-  Spol pritožbenega subjekta:
+  Spol pritožbenega subjekta ({pritozbeni_subjekt}:
   <br>
   <SegmentedButton segments={choices} let:segment singleSelect bind:selected={spol}>
     <!-- Note: the `segment` property is required! -->
@@ -45,9 +48,20 @@
 
   <p/>
 
-  Spol alternative:
+  Spol alternative ({alternativa}):
   <br>
   <SegmentedButton segments={choices} let:segment singleSelect bind:selected={spol_alt}>
+    <!-- Note: the `segment` property is required! -->
+    <Segment {segment}>
+      <Label>{segment}</Label>
+    </Segment>
+  </SegmentedButton>
+
+  <p/>
+
+  Spol skupine ({skupina}):
+  <br>
+  <SegmentedButton segments={choices} let:segment singleSelect bind:selected={spol_skupina}>
     <!-- Note: the `segment` property is required! -->
     <Segment {segment}>
       <Label>{segment}</Label>
@@ -128,7 +142,7 @@
   <br>
   In <b>TO JE</b>
   <br>
-  Da so usi ponudniki interneta v Sloveniji poslovni partnerji od SIOL-a
+  Da so {#if spol_skupina === "moški"}usi{:else if spol_skupina === "ženski"}use{:else}usa{/if} {skupina} v Sloveniji {#if spol_skupina === "moški"}poslovni partnerji{:else if spol_skupina === "ženski"}poslovne partnerice{:else}poslovni partnerji{/if} od {sklanjatev_rodilnik}.
   <br>
   KAJ PA TO POMEN?
   <br>
