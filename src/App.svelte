@@ -15,6 +15,7 @@
   let nedelujoci_subjekt = "modem";
   let zacetna_pritozba = "najbolj beden, najbolj smrdljiv, najbolj kretenski internetni ponudnik v Sloveniji";
   let spol = "moški";
+  let spol_alt = "moški";
 </script>
 
 <main>
@@ -31,6 +32,27 @@
   <Textfield bind:value={storitve} label="Storitev (o kvaliteti vašega interneta)" style="width: 100%" helperLine$style="width: 100%;" />
   <Textfield bind:value={troubleshooting} label="Iskanje težav (a ste že probal resetirat modem)" style="width: 100%" helperLine$style="width: 100%;" />
   <Textfield bind:value={nedelujoci_subjekt} label="Nedelujoči subjekt (koga/kaj mu jebemo v pičko (pičko materino i ta modem))" style="width: 100%" helperLine$style="width: 100%;" />
+
+  <p/>
+  Spol pritožbenega subjekta:
+  <br>
+  <SegmentedButton segments={choices} let:segment singleSelect bind:selected={spol}>
+    <!-- Note: the `segment` property is required! -->
+    <Segment {segment}>
+      <Label>{segment}</Label>
+    </Segment>
+  </SegmentedButton>
+
+  <p/>
+
+  Spol alternative:
+  <br>
+  <SegmentedButton segments={choices} let:segment singleSelect bind:selected={spol_alt}>
+    <!-- Note: the `segment` property is required! -->
+    <Segment {segment}>
+      <Label>{segment}</Label>
+    </Segment>
+  </SegmentedButton>
 
   <h2>{pritozbeni_subjekt} pritožba</h2>
 
@@ -98,13 +120,13 @@
   <br>
   Zdaj pa pozor!
   <br>
-  Js mislm da bi usi mogl preklicat {sklanjatev_tozilnik}
+  Js mislm, da bi usi mogl preklicat {sklanjatev_tozilnik}
   <br>
   In jt na drug ponudnik interneta
   <br>
-  Ampak kle pa nastane en poFUKAN, MEJHN, zajeben u PIĆKU problem
+  Ampak kle pa nastane en <b>poFUKAN, MEJHN, zajeben u PIĆKU problem</b>,
   <br>
-  In TO JE
+  In <b>TO JE</b>
   <br>
   Da so usi ponudniki interneta v Sloveniji poslovni partnerji od SIOL-a
   <br>
@@ -112,7 +134,7 @@
   <br>
   <b>DA GRE <i>VSE PREK {sklanjatev_rodilnik.toUpperCase()} PIZDA TI MATRNA GNILA</i>,</b>
   <br>
-  <b>MAMO TI JEBEM U *PIČKO* i {sklanjatev_tozilnik} da ti jebem.</b>
+  <b>MAMO TI JEBEM U <b>PIČKO</b> i {sklanjatev_tozilnik} da ti jebem.</b>
   <br>
   Kretensko.
   <br>
@@ -136,9 +158,9 @@
 
   Skratka ...
   <br>
-  Če ne bo {alternativa} mau spremenu stvari na slovenskem trgu,
+  Če ne bo {alternativa} mau {#if spol === "moški"}spremenu{:else if spol === "ženski"}spremenila{:else}spremenilo{/if} stvari na slovenskem trgu,
   <br>
-  pol bomo šli in bomo zažgal ta <b>poFUKAN {sklanjatev_tozilnik}!</b>
+  pol bomo šli in bomo zažgal {#if spol === "moški"}ta{:else if spol === "ženski"}to{:else}to{/if} <b>{#if spol === "moški"}poFUKAN{:else if spol === "ženski"}poFUKANO{:else}poFUKANO{/if} {sklanjatev_tozilnik}!</b>
   <br>
   Ker mi gre na [?]!
   <br>
